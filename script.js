@@ -15,26 +15,37 @@
     //function printWinner
       //prints statement according to findWinner
     
-const instructions = alert("Please open the console by pressing F12 or Ctrl + Alt + J. \n Press 'ok' when you have done so.");
+//const instructions = alert("Please open the console by pressing F12 or Ctrl + Alt + J. \n Press 'ok' when you have done so.");
+
 let playerSelection = prompt("Enter one: 'Rock', 'Paper', or 'Scissors'.");
+//Make playerSelection case-insensitive
+playerSelection = playerSelection.toLowerCase();
+    if (playerSelection != "rock" && 
+    playerSelection != "paper" && 
+    playerSelection != "scissors") {
+        prompt("Please enter either 'Rock', 'Paper', or 'Scissors'.");
+    }
 const computerSelection = computerPlay();
+
 let playerPoints = 0;
 let computerPoints = 0;
 
 function computerPlay() {
-    let computerChoice = Math.floor(Math.random() * 3) + 1;
-    if (computerChoice == 1) {
-        return "Rock";
-    } else if (computerChoice == 2) {
-        return "Paper";
+    let computerChoice = Math.floor(Math.random() * 12) + 1;
+    if (computerChoice < 5) {
+        return "rock";
+    } else if (computerChoice < 9) {
+        return "paper";
     } else {
-        return "Scissors";
+        return "scissors";
     }
 }
 
 function round(playerSelection, computerSelection) {
-    //Make playerSelection case-insensitive
-    playerSelection = toLowerCase(playerSelection); 
+    computerPlay();
+    //Display Results
+    console.log(`You chose: ${playerSelection}.`);
+    console.log(`The computer chose: ${computerSelection}.`);
     //Tie
     if (playerSelection == computerSelection) {
         return "It's a Tie!";
@@ -54,10 +65,10 @@ function round(playerSelection, computerSelection) {
         return "You Lost! The computer's paper cunningly enfolds your rock.";
     }
 }
-
+/*
 function points(round) {
     if ("It's a Tie!") {
-        return playerPoints + 0; //uh
+        return playerPoints + 0;
     } else if ("You Won! Your Rock easily smashes the computer's scissor blades." || 
               "You Won! Your sharp Scissor blades slice through the computer's paper." ||
               "You Won! Your paper cunningly enfolds the computer's rock.") {
@@ -68,10 +79,9 @@ function points(round) {
 }
 
 function game() {
-    playerSelection;
     for(let i = 0; i < 5; i++) {
-        round();
-        points();
+        round(playerSelection, computerSelection);
+        points(round);
     }
     if (playerPoints > computerPoints) {
         console.log("You defeated the computer and won the RPS Championship!");
@@ -82,4 +92,6 @@ function game() {
     }
 }
 
-console.log(game);
+console.log(game());
+*/
+console.log(round(playerSelection, computerSelection));
