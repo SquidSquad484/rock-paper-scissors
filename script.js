@@ -76,26 +76,25 @@ function round(playerSelection, computerSelection) {
     }
 }
 
-function points(playerSelection, computerSelection) {
+function points(playerPoints, computerPoints) {
     if (playerSelection == computerSelection) {
-        return playerPoints;
+        return playerPoints + 0;
     } else if (playerSelection == "rock" && computerSelection == "scissors" || 
-        playerSelection == "scissors" && computerSelection == "paper" ||
-        playerSelection == "paper" && computerSelection == "rock") {
-        return ++playerPoints;
+              playerSelection == "scissors" && computerSelection == "paper" ||
+              playerSelection == "paper" && computerSelection == "rock") {
+        return playerPoints++;
     } else {
-        return ++computerPoints;
+        return computerPoints++;
     }
 }
 
 function game() {
-    console.log(round(playerSelection, computerSelection));
-    points(round);
+    console.log(round(playerSelection, computerPlay()));
+    console.log(points(playerPoints, computerPoints));
     for(let i = 2; i < 6; i++) {
         playerSelection = prompt(`-----Round ${i}----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.`);
-        computerSelection;
-        console.log(round(playerSelection, computerSelection));
-        points(playerSelection, computerSelection);
+        console.log(round(playerSelection, computerPlay()));
+        console.log(points(playerPoints, computerPoints));
     }
     if (playerPoints > computerPoints) {
         console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
@@ -107,3 +106,4 @@ function game() {
 }
 
 console.log(game());
+console.log(playerPoints, computerPoints);
