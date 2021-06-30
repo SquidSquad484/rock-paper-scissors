@@ -28,6 +28,8 @@ const introduction = alert("Welcome to Console Rock Paper Scissors, which you ma
 const instructions = alert("Please open the console by pressing F12 or Ctrl + Shift + K. \n Press 'ok' when you have done so.");
 
 let playerSelection = prompt("Enter one: 'Rock', 'Paper', or 'Scissors'.");
+
+function playerInput(playerSelection) {
 //Make playerSelection case-insensitive
 playerSelection = playerSelection.toLowerCase();
     if (playerSelection != "rock" && 
@@ -35,7 +37,9 @@ playerSelection = playerSelection.toLowerCase();
     playerSelection != "scissors") {
         prompt("Please enter either 'Rock', 'Paper', or 'Scissors'.");
     }
-const computerSelection = computerPlay();
+    return playerSelection;
+}
+
 
 let playerPoints = 0;
 let computerPoints = 0;
@@ -51,50 +55,48 @@ function computerPlay() {
     }
 }
 
-function round(playerSelection, computerSelection) {
+function round(playerSelection) {
     computerPlay();
+    playerInput(playerSelection);
+    //let computerSelection = computerPlay();
     //Display Results
     console.log(`You chose: ${playerSelection}.`);
-    console.log(`The computer chose: ${computerSelection}.`);
+    console.log(`The computer chose: ${computerPlay()}.`);
     //Tie
-    if (playerSelection == computerSelection) {
+    if (playerSelection == computerPlay()) {
         return "It's a Tie!";
     //Player Wins Conditions
-    } else if (playerSelection == "rock" && computerSelection == "scissors") {
+    } else if (playerSelection == "rock" && computerPlay() == "scissors") {
+        ++playerPoints;
         return "You Won! Your Rock easily smashes the computer's scissor blades.";
-    } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    } else if (playerSelection == "scissors" && computerPlay() == "paper") {
+        ++playerPoints;
         return "You Won! Your sharp Scissor blades slice through the computer's paper.";
-    } else if (playerSelection == "paper" && computerSelection == "rock") {
+    } else if (playerSelection == "paper" && computerPlay() == "rock") {
+        ++playerPoints;
         return "You Won! Your paper cunningly enfolds the computer's rock.";
     //Computer Wins Conditions
-    } else if (computerSelection == "rock" && playerSelection == "scissors") {
+    } else if (computerPlay() == "rock" && playerSelection == "scissors") {
+        ++computerPoints;
         return "You Lost! The computer's Rock easily smashes your scissor blades.";
-    } else if (computerSelection == "scissors" && playerSelection == "paper") {
+    } else if (computerPlay() == "scissors" && playerSelection == "paper") {
+        ++computerPoints;
         return "You Lost! The computer's sharp Scissor blades slice through your paper.";
     } else {
+        ++computerPoints;
         return "You Lost! The computer's paper cunningly enfolds your rock.";
     }
 }
 
-function points(playerPoints, computerPoints) {
-    if (playerSelection == computerSelection) {
-        return playerPoints + 0;
-    } else if (playerSelection == "rock" && computerSelection == "scissors" || 
-              playerSelection == "scissors" && computerSelection == "paper" ||
-              playerSelection == "paper" && computerSelection == "rock") {
-        return playerPoints++;
-    } else {
-        return computerPoints++;
-    }
-}
+let computerSelection = computerPlay();
 
 function game() {
-    console.log(round(playerSelection, computerPlay()));
-    console.log(points(playerPoints, computerPoints));
+    console.log(round(playerSelection));
+    console.log(playerPoints, computerPoints);
     for(let i = 2; i < 6; i++) {
         playerSelection = prompt(`-----Round ${i}----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.`);
-        console.log(round(playerSelection, computerPlay()));
-        console.log(points(playerPoints, computerPoints));
+        console.log(round(playerSelection));
+        console.log(playerPoints, computerPoints);
     }
     if (playerPoints > computerPoints) {
         console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
