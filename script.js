@@ -19,9 +19,6 @@ compare choices
 /* Extra Functions:
 - Tie-breaker Round
 - Function if playerSelection is null
-- Division between rounds
-- Fix tie bug
-- Fix points bug
 */
 
 const introduction = alert("Welcome to Console Rock Paper Scissors, which you may have guessed, is played in your console! The game will be 5 rounds long, with you against the computer.");
@@ -56,30 +53,30 @@ function computerPlay() {
 }
 
 function round(playerSelection) {
-    computerPlay();
+    let computerSelection = computerPlay();
     playerInput(playerSelection);
     //let computerSelection = computerPlay();
     //Display Results
     console.log(`You chose: ${playerSelection}.`);
-    console.log(`The computer chose: ${computerPlay()}.`);
+    console.log(`The computer chose: ${computerSelection}.`);
     //Tie
-    if (playerSelection == computerPlay()) {
+    if (playerSelection == computerSelection) {
         return "It's a Tie!";
     //Player Wins Conditions
-    } else if (playerSelection == "rock" && computerPlay() == "scissors") {
+    } else if (playerSelection == "rock" && computerSelection == "scissors") {
         ++playerPoints;
         return "You Won! Your Rock easily smashes the computer's scissor blades.";
-    } else if (playerSelection == "scissors" && computerPlay() == "paper") {
+    } else if (playerSelection == "scissors" && computerSelection == "paper") {
         ++playerPoints;
         return "You Won! Your sharp Scissor blades slice through the computer's paper.";
-    } else if (playerSelection == "paper" && computerPlay() == "rock") {
+    } else if (playerSelection == "paper" && computerSelection == "rock") {
         ++playerPoints;
         return "You Won! Your paper cunningly enfolds the computer's rock.";
     //Computer Wins Conditions
-    } else if (computerPlay() == "rock" && playerSelection == "scissors") {
+    } else if (computerSelection == "rock" && playerSelection == "scissors") {
         ++computerPoints;
         return "You Lost! The computer's Rock easily smashes your scissor blades.";
-    } else if (computerPlay() == "scissors" && playerSelection == "paper") {
+    } else if (computerSelection == "scissors" && playerSelection == "paper") {
         ++computerPoints;
         return "You Lost! The computer's sharp Scissor blades slice through your paper.";
     } else {
@@ -91,12 +88,22 @@ function round(playerSelection) {
 let computerSelection = computerPlay();
 
 function game() {
-    console.log(round(playerSelection));
-    console.log(playerPoints, computerPoints);
-    for(let i = 2; i < 6; i++) {
-        playerSelection = prompt(`-----Round ${i}----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.`);
-        console.log(round(playerSelection));
-        console.log(playerPoints, computerPoints);
+    for(let i = 1; i < 6; i++) {
+        if (i == 1) {
+            console.log(`----- Round ${i} ----- `);
+            console.log(round(playerSelection));
+            console.log(`Your Points: ${playerPoints}  Computer's Points: ${computerPoints}`);
+        } else if (i == 5) {
+            playerSelection = prompt(`----- Final Round ----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.`);
+            console.log("----- Final Round -----");
+            console.log(round(playerSelection));
+            console.log(`Your Points: ${playerPoints}  Computer's Points: ${computerPoints}`);
+        } else {
+            playerSelection = prompt(`----- Round ${i} ----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.`);
+            console.log(`----- Round ${i} -----`);
+            console.log(round(playerSelection));
+            console.log(`Your Points: ${playerPoints}  Computer's Points: ${computerPoints}`);
+        }
     }
     if (playerPoints > computerPoints) {
         console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
@@ -108,4 +115,3 @@ function game() {
 }
 
 console.log(game());
-console.log(playerPoints, computerPoints);
