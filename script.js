@@ -16,11 +16,8 @@ compare choices
     function printWinner
       prints statement according to findWinner
 */
-/* Extra Functions:
-- When won by 1 point, make console message change "points" to "point"
-*/
 
-const introduction = alert("Welcome to Console Rock Paper Scissors, which you may have guessed, is played in your console! The game will be 5 rounds long, with you against the computer.\n\n1 win = 1 point, and the player with more points at the end of the 5 rounds wins!");
+const introduction = alert("Welcome to Console Rock Paper Scissors, which you may have guessed, is played in your console! The game will be 5 rounds long, with you against the computer.\n\n1 win = 1 point, and the player with the most points at the end of the 5 rounds wins!");
 const instructions = alert("Please open the console by pressing F12 or Ctrl + Shift + K.\nPress 'ok' when you have done so.");
 
 let playerSelection = prompt("Enter one: 'Rock', 'Paper', or 'Scissors'.");
@@ -31,9 +28,8 @@ playerSelection = playerSelection.toLowerCase();
     if (playerSelection != "rock" && 
     playerSelection != "paper" && 
     playerSelection != "scissors") {
-        prompt("Please enter either 'Rock', 'Paper', or 'Scissors'.");
+        return playerSelection = prompt("Please enter either 'Rock', 'Paper', or 'Scissors'.");
     }
-    return playerSelection;
 }
 
 
@@ -86,6 +82,7 @@ function round(playerSelection) {
 
 let computerSelection = computerPlay();
 
+    
 function game() {
     for(let i = 1; i < 6; i++) {
         if (i == 1) {
@@ -105,9 +102,17 @@ function game() {
         }
     }
     if (playerPoints > computerPoints) {
-        console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
+        if (playerPoints - computerPoints == 1) {
+            console.log("You defeated the computer by 1 point and won the RPS Championship!");
+        } else {
+            console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
+        }
     } else if (playerPoints < computerPoints) {
-        console.log(`The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`);
+        if (computerPoints - playerPoints == 1) {
+            console.log("The computer destroyed you by 1 point and won the RPS Championship! :(");
+        } else {
+            console.log(`The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`);
+        }
     } else {
         console.log("Oh my, it's a tie!\n\nTie Breaker Round Initiated!!!");
         alert("You and the computer have tied. The Tie Breaker Round has been Initiated!");
@@ -115,9 +120,17 @@ function game() {
         console.log("---- Tie Breaker Round ----");
         console.log(round(playerSelection));
         if (playerPoints > computerPoints) {
-            console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
+            if (playerPoints - computerPoints == 1) {
+                console.log("You defeated the computer by 1 point and won the RPS Championship!");
+            } else {
+                console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
+            }
         } else if (playerPoints < computerPoints) {
-            console.log(`The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`);
+            if (computerPoints - playerPoints == 1) {
+                console.log("The computer destroyed you by 1 point and won the RPS Championship! :(");
+            } else {
+                console.log(`The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`);
+            }
         } else {
             console.log("Oh my, it's a tie!\n\nTie Breaker Round Initiated!!!");
             alert("You and the computer have tied. The Tie Breaker Round has been Initiated!");
