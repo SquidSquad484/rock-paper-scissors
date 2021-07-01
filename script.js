@@ -22,17 +22,6 @@ const instructions = alert("Please open the console by pressing F12 or Ctrl + Sh
 
 let playerSelection = prompt("Enter one: 'Rock', 'Paper', or 'Scissors'.");
 
-function playerInput(playerSelection) {
-//Make playerSelection case-insensitive
-playerSelection = playerSelection.toLowerCase();
-    if (playerSelection != "rock" && 
-    playerSelection != "paper" && 
-    playerSelection != "scissors") {
-        return playerSelection = prompt("Please enter either 'Rock', 'Paper', or 'Scissors'.");
-    }
-}
-
-
 let playerPoints = 0;
 let computerPoints = 0;
 
@@ -49,38 +38,48 @@ function computerPlay() {
 
 function round(playerSelection) {
     let computerSelection = computerPlay();
-    playerInput(playerSelection);
-    //let computerSelection = computerPlay();
+
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection != "rock" && 
+        playerSelection != "paper" && 
+        playerSelection != "scissors") {
+        playerSelection = prompt("Please enter either 'Rock', 'Paper', or 'Scissors'.");
+    }
     //Display Results
     console.log(`You chose: ${playerSelection}.`);
     console.log(`The computer chose: ${computerSelection}.`);
     //Tie
     if (playerSelection == computerSelection) {
+        alert("It's a Tie!");
         return "It's a Tie!";
     //Player Wins Conditions
     } else if (playerSelection == "rock" && computerSelection == "scissors") {
         ++playerPoints;
+        alert("You Won!");
         return "You Won! Your Rock easily smashes the computer's scissor blades.";
     } else if (playerSelection == "scissors" && computerSelection == "paper") {
         ++playerPoints;
+        alert("You Won!");
         return "You Won! Your sharp Scissor blades slice through the computer's paper.";
     } else if (playerSelection == "paper" && computerSelection == "rock") {
         ++playerPoints;
+        alert("You Won!");
         return "You Won! Your paper cunningly enfolds the computer's rock.";
     //Computer Wins Conditions
     } else if (computerSelection == "rock" && playerSelection == "scissors") {
         ++computerPoints;
+        alert("You Lost! :(");
         return "You Lost! The computer's Rock easily smashes your scissor blades.";
     } else if (computerSelection == "scissors" && playerSelection == "paper") {
         ++computerPoints;
+        alert("You Lost! :(");
         return "You Lost! The computer's sharp Scissor blades slice through your paper.";
     } else {
         ++computerPoints;
+        alert("You Lost! :(");
         return "You Lost! The computer's paper cunningly enfolds your rock.";
     }
 }
-
-let computerSelection = computerPlay();
 
     
 function game() {
