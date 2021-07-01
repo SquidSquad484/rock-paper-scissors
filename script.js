@@ -17,12 +17,11 @@ compare choices
       prints statement according to findWinner
 */
 /* Extra Functions:
-- Tie-breaker Round
-- Function if playerSelection is null
+- When won by 1 point, make console message change "points" to "point"
 */
 
-const introduction = alert("Welcome to Console Rock Paper Scissors, which you may have guessed, is played in your console! The game will be 5 rounds long, with you against the computer.");
-const instructions = alert("Please open the console by pressing F12 or Ctrl + Shift + K. \n Press 'ok' when you have done so.");
+const introduction = alert("Welcome to Console Rock Paper Scissors, which you may have guessed, is played in your console! The game will be 5 rounds long, with you against the computer.\n\n1 win = 1 point, and the player with more points at the end of the 5 rounds wins!");
+const instructions = alert("Please open the console by pressing F12 or Ctrl + Shift + K.\nPress 'ok' when you have done so.");
 
 let playerSelection = prompt("Enter one: 'Rock', 'Paper', or 'Scissors'.");
 
@@ -110,7 +109,22 @@ function game() {
     } else if (playerPoints < computerPoints) {
         console.log(`The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`);
     } else {
-        console.log("Oh my, it's a tie!");
+        console.log("Oh my, it's a tie!\n\nTie Breaker Round Initiated!!!");
+        alert("You and the computer have tied. The Tie Breaker Round has been Initiated!");
+        playerSelection = prompt("----- Tie Breaker Round ----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.");
+        console.log("---- Tie Breaker Round ----");
+        console.log(round(playerSelection));
+        if (playerPoints > computerPoints) {
+            console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
+        } else if (playerPoints < computerPoints) {
+            console.log(`The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`);
+        } else {
+            console.log("Oh my, it's a tie!\n\nTie Breaker Round Initiated!!!");
+            alert("You and the computer have tied. The Tie Breaker Round has been Initiated!");
+            playerSelection = prompt("----- Tie Breaker Round ----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.");
+            console.log("---- Tie Breaker Round ----");
+            console.log(round(playerSelection));
+        }
     }
 }
 
