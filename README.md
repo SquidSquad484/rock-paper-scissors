@@ -1,2 +1,3 @@
-Functional **Rock Paper Scissors** Console Game.
-First Javascript Project.
+**Reflection:**
+This is my first Javascript Project. I had a bit of prior experience: a Java class (the language, from what I've learned, seems quite similar) where i made a rock paper scissors game. Because of that, it was a bit easier than the Google Homepage Project, but still quite challenging. I had a lot of fun with this because it was a game, and of course, it was interactive!
+I was also able to practice writing Pseudo-code and learned a lot about the importance of planning and understanding your code. 
