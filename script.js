@@ -50,33 +50,26 @@ function round(playerSelection) {
     console.log(`The computer chose: ${computerSelection}.`);
     //Tie
     if (playerSelection == computerSelection) {
-        alert("It's a Tie!");
         return "It's a Tie!";
     //Player Wins Conditions
     } else if (playerSelection == "rock" && computerSelection == "scissors") {
         ++playerPoints;
-        alert("You Won!");
         return "You Won! Your Rock easily smashes the computer's scissor blades.";
     } else if (playerSelection == "scissors" && computerSelection == "paper") {
         ++playerPoints;
-        alert("You Won!");
         return "You Won! Your sharp Scissor blades slice through the computer's paper.";
     } else if (playerSelection == "paper" && computerSelection == "rock") {
         ++playerPoints;
-        alert("You Won!");
         return "You Won! Your paper cunningly enfolds the computer's rock.";
     //Computer Wins Conditions
     } else if (computerSelection == "rock" && playerSelection == "scissors") {
         ++computerPoints;
-        alert("You Lost! :(");
         return "You Lost! The computer's Rock easily smashes your scissor blades.";
     } else if (computerSelection == "scissors" && playerSelection == "paper") {
         ++computerPoints;
-        alert("You Lost! :(");
         return "You Lost! The computer's sharp Scissor blades slice through your paper.";
     } else {
         ++computerPoints;
-        alert("You Lost! :(");
         return "You Lost! The computer's paper cunningly enfolds your rock.";
     }
 }
