@@ -2,26 +2,26 @@
 <html>
     <head>
         <title>Rock Paper Scissors</title>
-        <link rel="stylesheet" type="text/css" src="style.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body id="container">
-        <h1 id="round-display"></h1>
         <h1>Choose one:</h1>
         <div id="player-choice-buttons">
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissors">Scissors</button>
+            <button class="choice-buttons" id="rock">Rock</button>
+            <button class="choice-buttons" id="paper">Paper</button>
+            <button class="choice-buttons" id="scissors">Scissors</button>
         </div>
-        <div id="choices">
+        <div class="game-results" id="choices">
             <div id="player-choice"></div>
             <div id="computer-choice"></div>
         </div>
-        <div id="results"></div>
+    
+        <div class="game-results" id="results"></div>
         <div id="points">
             <div id="player-results"></div>
             <div id="computer-results"></div>
         </div>
-        <div id="winner"></div>
+        <div class="game-results" id="winner"></div>
     </body>
     <script type="text/javascript" src="script.js"></script>
 </html>

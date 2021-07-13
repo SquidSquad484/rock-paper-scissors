@@ -1,15 +1,10 @@
-const container = document.getElementById("container");
-
-//let countRound = 0;
-//const roundDisplay = document.getElementById("round-display");
-
 const playerChoiceButtons = document.getElementById("player-choice-buttons");
 const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 
-let playerPoints = 0/* document.getElementById("player-points") */;
-let computerPoints = 0/* document.getElementById("computer-points") */;
+let playerPoints = 0;
+let computerPoints = 0;
 
 const playerResults = document.getElementById("player-results");
 let computerResults = document.getElementById("computer-results");
@@ -19,6 +14,16 @@ const playerChoice = document.getElementById("player-choice");
 const computerChoice = document.getElementById("computer-choice");
 
 const winner = document.getElementById("winner");
+winner.style.fontWeight = "bold"; 
+
+const playAgain = document.createElement("button");
+playAgain.innerHTML = "Play Again?";
+container.appendChild(playAgain);
+playAgain.style.position = "relative";
+playAgain.style.top = "52%";
+playAgain.style.width = "150px";
+playAgain.style.height = "50px";
+playAgain.style.visibility = "hidden";
 
 function computerPlay() {
     let computerChoice = Math.floor(Math.random() * 12) + 1;
@@ -67,21 +72,6 @@ function round(playerSelection) {
     }
     displayPoints();
     game();
-  /*   if (playerPoints === 5 || computerPoints == 5) {
-        if (playerPoints > computerPoints) {
-            if (playerPoints - computerPoints == 1) {
-                winner.textContent = "You defeated the computer by 1 point and won the RPS Championship!";
-            } else {
-                winner.textContent = `You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`;
-            }
-        } else if (playerPoints < computerPoints) {
-            if (computerPoints - playerPoints == 1) {
-                winner.textContent = "The computer destroyed you by 1 point and won the RPS Championship! :(";
-            } else {
-                winner.textContent = `The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`;
-            }
-        }
-    } */
 }
 
 function game() {
@@ -98,33 +88,9 @@ function game() {
             } else {
                 winner.textContent = `The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`;
             }
-        } else {
-            console.log("Oh my, it's a tie!\n\nTie Breaker Round Initiated!!!");
-            alert("You and the computer have tied. The Tie Breaker Round has been Initiated!");
-            playerSelection = prompt("----- Tie Breaker Round ----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.");
-            console.log("---- Tie Breaker Round ----");
-            console.log(round(playerSelection));
-            if (playerPoints > computerPoints) {
-                if (playerPoints - computerPoints == 1) {
-                    console.log("You defeated the computer by 1 point and won the RPS Championship!");
-                } else {
-                    console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
-                }
-            } else if (playerPoints < computerPoints) {
-                if (computerPoints - playerPoints == 1) {
-                    console.log("The computer destroyed you by 1 point and won the RPS Championship! :(");
-                } else {
-                    console.log(`The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`);
-                }
-            } else {
-                console.log("Oh my, it's a tie!\n\nTie Breaker Round Initiated!!!");
-                alert("You and the computer have tied. The Tie Breaker Round has been Initiated!");
-                playerSelection = prompt("----- Tie Breaker Round ----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.");
-                console.log("---- Tie Breaker Round ----");
-                console.log(round(playerSelection));
-            }
-    }
-}
+        }
+        playAgain.style.visibility = "visible";
+    } 
 }
 
 rock.addEventListener("click", () => {
@@ -137,3 +103,30 @@ scissors.addEventListener("click", () => {
     round("scissors");
 });
 
+function endGame() {
+    if (playerPoints == 5 || computerPoints == 5) {
+        rock.removeEventListener("click", () => {
+            round("rock");
+        });
+        paper.removeEventListener("click", () => {
+            round("paper");
+        });
+        scissors.removeEventListener("click", () => {
+            round("scissors");
+        });
+    }
+}
+
+endGame();
+
+playAgain.addEventListener("click", () => {
+    playerChoice.textContent = "";
+    computerChoice.textContent = "";
+    results.textContent = "";
+    playerResults.textContent = "";
+    computerResults.textContent = "";
+    playerPoints = 0;
+    computerPoints = 0;
+    winner.textContent = "";
+    playAgain.style.visibility = "hidden";
+});

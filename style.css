@@ -1,0 +1,43 @@
+#container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+}
+h1 {
+    padding-top: 5%; 
+}
+/* Buttons */
+#player-choice-buttons {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    margin-top: -90px;
+}
+.choice-buttons {
+    height: 180px;
+    width: 180px;
+    border-radius: 20%;
+}
+
+.game-results {
+    position: relative;
+    line-height: 30px;
+    top: 50%;
+}
+#choices {
+    position: relative;
+}
+#results {
+    position: relative;
+}
+#points {
+    position: absolute;
+    text-align: left;
+    padding-top: 5px;
+    padding-left: 5px;
+    top: 0;
+    left: 0;
+}
