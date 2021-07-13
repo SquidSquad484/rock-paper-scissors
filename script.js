@@ -1,6 +1,7 @@
 const container = document.getElementById("container");
 
-let countRound = 0;
+//let countRound = 0;
+//const roundDisplay = document.getElementById("round-display");
 
 const playerChoiceButtons = document.getElementById("player-choice-buttons");
 const rock = document.getElementById("rock");
@@ -38,8 +39,8 @@ function displayPoints() {
 function round(playerSelection) {
     const computerSelection = computerPlay();
 
-    playerChoice.textContent =  `Your Chose: ${playerSelection}`;
-    computerChoice.textContent =  `The Computer Chose: ${computerSelection}`;
+    playerChoice.textContent =  `You chose: ${playerSelection}`;
+    computerChoice.textContent =  `The computer chose: ${computerSelection}`;
     //Tie
     if (playerSelection == computerSelection) {
         results.textContent = "It's a Tie!";
@@ -65,7 +66,7 @@ function round(playerSelection) {
         computerPoints++;
     }
     displayPoints();
-    countRound++;
+    game();
   /*   if (playerPoints === 5 || computerPoints == 5) {
         if (playerPoints > computerPoints) {
             if (playerPoints - computerPoints == 1) {
@@ -83,54 +84,19 @@ function round(playerSelection) {
     } */
 }
 
-/*
 function game() {
-    for(let i = 1; i < 6; i++) {
-        if (i == 1) {
-            playerPoints.textContent = s"Your Points: " + playerPoints;
-            computerPoints.textContent = "Computer's Points: " + computerPoints;
-            playerChoiceButtons.removeEventListener("click", e => {
-                game();
-            });
-        } else if (i == 5) {
-            countRound.textContent = "Final Round";
-            playerPoints.textContent = `Your Points: ${playerPoints}`;
-            computerPoints.textContent = `Computer's Points: ${computerPoints}`;
-        } else {
-            countRound.textContent = `Round ${i}`;
-            playerPoints.textContent = `Your Points: ${playerPoints}`;
-            computerPoints.textContent = `Computer's Points: ${computerPoints}`;
-        }
-    }
-    if (playerPoints > computerPoints) {
-        if (playerPoints - computerPoints == 1) {
-            console.log("You defeated the computer by 1 point and won the RPS Championship!");
-        } else {
-            console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
-        }
-    } else if (playerPoints < computerPoints) {
-        if (computerPoints - playerPoints == 1) {
-            console.log("The computer destroyed you by 1 point and won the RPS Championship! :(");
-        } else {
-            console.log(`The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`);
-        }
-    } else {
-        console.log("Oh my, it's a tie!\n\nTie Breaker Round Initiated!!!");
-        alert("You and the computer have tied. The Tie Breaker Round has been Initiated!");
-        playerSelection = prompt("----- Tie Breaker Round ----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.");
-        console.log("---- Tie Breaker Round ----");
-        console.log(round(playerSelection));
+    if (playerPoints == 5 || computerPoints == 5) {
         if (playerPoints > computerPoints) {
             if (playerPoints - computerPoints == 1) {
-                console.log("You defeated the computer by 1 point and won the RPS Championship!");
+                winner.textContent = "You defeated the computer by 1 point and won the RPS Championship!";
             } else {
-                console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
+                winner.textContent = `You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`;
             }
         } else if (playerPoints < computerPoints) {
             if (computerPoints - playerPoints == 1) {
-                console.log("The computer destroyed you by 1 point and won the RPS Championship! :(");
+                winner.textContent = "The computer destroyed you by 1 point and won the RPS Championship! :(";
             } else {
-                console.log(`The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`);
+                winner.textContent = `The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`;
             }
         } else {
             console.log("Oh my, it's a tie!\n\nTie Breaker Round Initiated!!!");
@@ -138,10 +104,28 @@ function game() {
             playerSelection = prompt("----- Tie Breaker Round ----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.");
             console.log("---- Tie Breaker Round ----");
             console.log(round(playerSelection));
-        }
+            if (playerPoints > computerPoints) {
+                if (playerPoints - computerPoints == 1) {
+                    console.log("You defeated the computer by 1 point and won the RPS Championship!");
+                } else {
+                    console.log(`You defeated the computer by ${playerPoints - computerPoints} points and won the RPS Championship!`);
+                }
+            } else if (playerPoints < computerPoints) {
+                if (computerPoints - playerPoints == 1) {
+                    console.log("The computer destroyed you by 1 point and won the RPS Championship! :(");
+                } else {
+                    console.log(`The computer destroyed you by ${computerPoints - playerPoints} points and won the RPS Championship! :(`);
+                }
+            } else {
+                console.log("Oh my, it's a tie!\n\nTie Breaker Round Initiated!!!");
+                alert("You and the computer have tied. The Tie Breaker Round has been Initiated!");
+                playerSelection = prompt("----- Tie Breaker Round ----- \nEnter one: 'Rock', 'Paper', or 'Scissors'.");
+                console.log("---- Tie Breaker Round ----");
+                console.log(round(playerSelection));
+            }
     }
 }
-*/
+}
 
 rock.addEventListener("click", () => {
     round("rock");
