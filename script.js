@@ -21,7 +21,7 @@ const playAgain = document.createElement("button");
 playAgain.innerHTML = "Play Again?";
 container.appendChild(playAgain);
 playAgain.style.position = "relative";
-playAgain.style.top = "52%";
+playAgain.style.top = "50%";
 playAgain.style.width = "150px";
 playAgain.style.height = "50px";
 playAgain.style.visibility = "hidden";
@@ -40,14 +40,19 @@ function computerPlay() {
 function displayPoints() {
     playerResults.textContent = `Your Points: ${playerPoints}`;
     computerResults.textContent = `Computer's Points: ${computerPoints}`;
-    points.style.backgroundColor = "rgb(169, 231, 255)";
+    points.style.backgroundColor = "rgb(186, 214, 224)";
+    points.style.opacity = "0.7";
 }
 
 function round(playerSelection) {
     const computerSelection = computerPlay();
-
+    
+    playerChoice.style.fontSize = "20px";
+    computerChoice.style.fontSize = "20px";
     playerChoice.textContent =  `You chose: ${playerSelection}`;
     computerChoice.textContent =  `The computer chose: ${computerSelection}`;
+
+    results.style.fontSize = "20px";
     //Tie
     if (playerSelection == computerSelection) {
         results.textContent = "It's a Tie!";
@@ -77,6 +82,7 @@ function round(playerSelection) {
 }
 
 function game() {
+    winner.style.fontSize = "23px";
     if (playerPoints == 5 || computerPoints == 5) {
         if (playerPoints > computerPoints) {
             if (playerPoints - computerPoints == 1) {
@@ -131,4 +137,5 @@ playAgain.addEventListener("click", () => {
     computerPoints = 0;
     winner.textContent = "";
     playAgain.style.visibility = "hidden";
+    points.style.backgroundColor = "transparent";
 });
