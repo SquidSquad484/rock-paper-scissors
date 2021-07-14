@@ -3,6 +3,7 @@ const rock = document.getElementById("rock");
 const paper = document.getElementById("paper");
 const scissors = document.getElementById("scissors");
 
+const points = document.getElementById("points");
 let playerPoints = 0;
 let computerPoints = 0;
 
@@ -39,6 +40,7 @@ function computerPlay() {
 function displayPoints() {
     playerResults.textContent = `Your Points: ${playerPoints}`;
     computerResults.textContent = `Computer's Points: ${computerPoints}`;
+    points.style.backgroundColor = "rgb(169, 231, 255)";
 }
 
 function round(playerSelection) {
